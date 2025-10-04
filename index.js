@@ -3,7 +3,7 @@ const connectDB = require( "./db" );
 
 require('dotenv').config();
 const userRoutes = require("./routes/users");
-const postRoutes = require("./routes/posts")
+const postsRoutes = require("./routes/posts")
 
 const app = express();
 

@@ -33,8 +33,8 @@ const register = async (req, res) => {
 
 
 //other controller (login)
-//const login = async (req, res) => {
-    /**const {email, password} = req.body
+const login = async (req, res) => {
+    const {email, password} = req.body
     try {
         const existingUser = await user.findOne({email})
 
@@ -45,16 +45,17 @@ const register = async (req, res) => {
 
         if (!isPasswordCorrect) return res.status(404).json({message: "Password is incorrect"})
 
-        const token =jwt.sign({email: existingUser.email, id: existingUser._id}), `test` , {}
-
+        const token =jwt.sign({email: existingUser.email, id: existingUser._id}, `test`  , {e});
+        
         res.status(200).json({result: existingUser, token})
 
     } catch (error) {
         res.status(500).json({message: error.message})
     }
 }
-**/
+
 module.exports = {
-            register
+            register,
+            login
 
 }
