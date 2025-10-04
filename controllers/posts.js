@@ -10,7 +10,7 @@ const createPost = async (req, res) => {
     try {
         await newPost.save();
 
-        res.status(201).json9({newPost})
+        res.status(201).json({newPost})
     } catch (error) {
         res.status(404).json({message: error.message})
     }
@@ -27,6 +27,6 @@ const getAllPosts = async (req, res) => {
 }
 
 module.exports = {
-    createPost
+    createPost,
     getAllPosts
 }

@@ -3,14 +3,18 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 
-const User = require("../models/user");
+//const User = require("../models/user");
 
 
 const register = async (req, res) => {
     const {email,confirmPassword, firstName, lastName} = req.body
+
+
     try {
         const existingUser = await User.findOne({ email });
+
         if(existingUser) return res.status(404).json({message: "User already exists"})
+
         if (password !== confirmPassword) return res.status(404).json({message: "Password miss much"})
 
         const hashedPassword = await bcrypt.hash(password, 12);
@@ -29,8 +33,8 @@ const register = async (req, res) => {
 
 
 //other controller (login)
-const login = async (req, res) => {
-    const {email, password} = req.body
+//const login = async (req, res) => {
+    /**const {email, password} = req.body
     try {
         const existingUser = await user.findOne({email})
 
@@ -43,13 +47,13 @@ const login = async (req, res) => {
 
         const token =jwt.sign({email: existingUser.email, id: existingUser._id}), `test` , {}
 
-        res.status(200).json({result: existingUser})
+        res.status(200).json({result: existingUser, token})
 
     } catch (error) {
-        
+        res.status(500).json({message: error.message})
     }
 }
-
+**/
 module.exports = {
             register
 

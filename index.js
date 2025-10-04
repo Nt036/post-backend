@@ -1,22 +1,30 @@
 const express = require("express")
-const connectDB = require( "./db" )
+const connectDB = require( "./db" );
+
 require('dotenv').config();
+const userRoutes = require("./routes/users");
+const postRoutes = require("./routes/posts")
 
-
-const userRoutees = require("./routes/users");
-const postRoutes = require
 const app = express();
 
+app.use(express.json());
+
 app.get('/' , (req, res) => {
-    res.send('Welcome to my post api')
+    res.send('Welcome to my post-api')
 })
+
+//routes
+app.use('/user', userRoutes);
+app.use('/posts', postsRoutes);
+
 
 const PORT  = process.env.PORT
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
-app.use('/posts', postRoutes);
+
+
 connectDB();
 //name your project
  //go to mongodb  create a new project the create cluster click free then click create a deployment 
