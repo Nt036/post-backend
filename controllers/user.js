@@ -36,7 +36,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const {email, password} = req.body
     try {
-        const existingUser = await user.findOne({email})
+        const existingUser = await User.findOne({email})
 
        
         if(!existingUser) return res.status(404).json({message: "user doesn't exist"})
@@ -45,7 +45,7 @@ const login = async (req, res) => {
 
         if (!isPasswordCorrect) return res.status(404).json({message: "Password is incorrect"})
 
-        const token =jwt.sign({email: existingUser.email, id: existingUser._id}, `test`  , {e});
+        const token =jwt.sign({email: existingUser.email, id: existingUser._id}, `test`  , {});
         
         res.status(200).json({result: existingUser, token})
 
