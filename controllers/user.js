@@ -7,7 +7,7 @@ const User = require("../models/user");
 
 
 const register = async (req, res) => {
-    const {email,confirmPassword, firstName, lastName} = req.body
+    const {email,password,confirmPassword, firstName, lastName} = req.body
 
 
     try {

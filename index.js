@@ -1,6 +1,7 @@
 const express = require("express")
 const connectDB = require( "./db" );
 
+const cors = require('cors')
 require('dotenv').config();
 const userRoutes = require("./routes/users");
 const postsRoutes = require("./routes/posts")
@@ -8,6 +9,15 @@ const postsRoutes = require("./routes/posts")
 const app = express();
 
 app.use(express.json());
+//middleware to handle CORS
+const corsOptions = {
+    origin: 'http://127.0.0.1:53179/index.html',
+    methods: ['GET' , 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.get('/' , (req, res) => {
     res.send('Welcome to my post-api')
