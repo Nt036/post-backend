@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 //middleware to handle CORS
 const corsOptions = {
-    origin: 'http://127.0.0.1:53179/index.html',
+    origin: "http://127.0.0.1:56966/index.html",
     methods: ['GET' , 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
